@@ -1,0 +1,11 @@
+{
+  "name": "pub-sub",
+  "version": "0.0.1",
+  "description": "Cloud Function for handling pub/sub messages",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "license"
+}
