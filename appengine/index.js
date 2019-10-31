@@ -16,7 +16,7 @@ const pubsubClient = new PubSub({
   projectId: process.env.GOOGLE_CLOUD_PROJECT
 })
 
-const allowedTopics = ['publish', 'test']
+const allowedTopics = ['publish', 'test', 'text']
 
 app.post('/:topic', async (req, res) => {
   if (typeof req.body === 'undefined') {
