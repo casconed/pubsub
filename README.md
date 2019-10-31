@@ -5,7 +5,9 @@ to deploy app engine app:
 - `cd appengine && gcloud app deploy`
 
 to deploy functions:
-- `cd functions && .gcloud functions deploy subscriber --runtime nodejs10 --trigger-topic publish`
+- `cd functions`
+- `gcloud functions deploy subscriber --runtime nodejs10 --trigger-topic publish`
+- `gcloud functions deploy test --runtime nodejs10 --trigger-topic test`
 
 publish messages manually:
 - ` gcloud pubsub topics publish TOPIC_NAME --message '{"message": "CONTENT"}'`

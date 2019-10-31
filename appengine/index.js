@@ -16,26 +16,20 @@ const pubsubClient = new PubSub({
   projectId: process.env.GOOGLE_CLOUD_PROJECT
 })
 
-app.post('/publish', async (req, res) => {
+const allowedTopics = ['publish', 'test']
+
+app.post('/:topic', async (req, res) => {
   if (typeof req.body === 'undefined') {
     return res.status(400).send('Bad Request')
   }
 
-  res.status(204).send()
-
-  await publishMessage('publish', req.body)
-
-  return res.end()
-})
-
-app.post('/test', async (req, res) => {
-  if (typeof req.body === 'undefined') {
-    return res.status(400).send('Bad Request')
+  if (!allowedTopics.includes(req.params.topic)) {
+    return res.status(404).send('Not Found')
   }
 
   res.status(204).send()
 
-  await publishMessage('test', req.body)
+  await publishMessage(req.params.topic, req.body)
 
   return res.end()
 })
