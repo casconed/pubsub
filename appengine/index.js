@@ -28,6 +28,18 @@ app.post('/publish', async (req, res) => {
   return res.end()
 })
 
+app.post('/test', async (req, res) => {
+  if (typeof req.body === 'undefined') {
+    return res.status(400).send('Bad Request')
+  }
+
+  res.status(204).send()
+
+  await publishMessage('test', req.body)
+
+  return res.end()
+})
+
 const publishMessage = async function (topic, message) {
   try {
     await pubsubClient.topic(topic)
